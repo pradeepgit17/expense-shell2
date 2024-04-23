@@ -12,8 +12,6 @@ N="\e[0m"
 echo "Please enter DB password:"
 read  mysql_root_password
 #ExpenseApp@1
-
-
 VALIDATE(){
 
 if [ $1 -ne 0 ]
@@ -38,7 +36,7 @@ fi
 dnf install mysql-server -y &>>$LOGFILE
 VALIDATE $? " installing the mysql"
 
-systemctl enable mysqld -y &>>$LOGFILE
+systemctl enable mysqld  &>>$LOGFILE
 VALIDATE $? "Enabling MySQL Server"
 
 systemctl start mysqld &>>$LOGFILE
