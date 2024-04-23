@@ -66,7 +66,6 @@ VALIDATE $? "Installing nodejs dependencies"
 
 cp /home/ec2-user/expense-shell2/backend.service /etc/systemd/system/backend.service &>>$LOGFILE
 
-#cp /home/ec2-user/expense-shell/backend.service /etc/systemd/system/backend.service &>>$LOGFILE
 VALIDATE $? "Copied backend service"
 
 systemctl daemon-reload &>>$LOGFILE
@@ -81,7 +80,8 @@ VALIDATE $? "Enabling backend"
 dnf install mysql -y &>>$LOGFILE
 VALIDATE $? "Installing MySQL Client"
 
-mysql -h db.pradeep17.online -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$LOGFILE
+#mysql -h db.pradeep17.online -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$LOGFILE
+mysql -h 172.31.84.244 -uroot -pExpenseApp@1  < /app/schema/backend.sql &>>$LOGFILE
 VALIDATE $? "Schema loading"
 
 systemctl restart backend &>>$LOGFILE
